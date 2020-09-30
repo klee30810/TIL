@@ -1,5 +1,5 @@
 # TIL
-Today I Learned! \newline
+Today I Learned! 
 
 
 Today better than yesterday.
