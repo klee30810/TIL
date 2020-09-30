@@ -1,3 +1,3 @@
 # TIL
-Today I Learned! \par
+Today I Learned! \newline
 Today better than yesterday.
