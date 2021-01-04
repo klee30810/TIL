@@ -19,7 +19,7 @@
 | [N 찍기](https://www.acmicpc.net/problem/2741) |  [2741](./2741.py)  |   -   |   입출력   |
 | [기찍 N](https://www.acmicpc.net/problem/2742) |  [2742](./2742.py)  |   -   |   입출력   |
 | [구구단](https://www.acmicpc.net/problem/2739) |  [2739](./2739.py)  |   -   |   입출력   |
-
+| [2007년](https://www.acmicpc.net/problem/1927) | [1924](.1924.py) | - | 입출력 |
 '''
 
 
