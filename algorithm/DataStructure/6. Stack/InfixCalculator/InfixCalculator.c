@@ -11,8 +11,8 @@ int EvalInfixExp(char exp[])
 	char *expCopy = (char *)malloc(len + 1);
 	strcpy(expCopy, exp);
 
-	ConvToRPNExp(exp);
-	result = EvalRPNExp(exp);
+	ConvToRPNExp(expCopy);
+	result = EvalRPNExp(expCopy);
 
 	free(expCopy);
 	return result;
