@@ -1,5 +1,5 @@
-# TIL
-Today I Learned! 
+# TIL_CS
+Today I Learned! About Computer Science
 
 
 Today better than yesterday.
