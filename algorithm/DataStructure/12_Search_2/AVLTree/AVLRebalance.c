@@ -89,6 +89,7 @@ BTreeNode * RotateRL(BTreeNode * bst)
     return RotateRR(pNode);
 }
 
+// 트리 리밸런싱
 BTreeNode * Rebalance(BTreeNode ** pRoot)
 {
     int hDiff = GetHeightDiff(*pRoot);
