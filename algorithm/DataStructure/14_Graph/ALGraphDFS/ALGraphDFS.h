@@ -1,5 +1,5 @@
-#ifndef __AL_GRAPH__
-#define __AL_GRAPH__
+#ifndef __AL_GRAPH_DFS__
+#define __AL_GRAPH_DFS__
 
 #include "DLinkedList.h"
 
@@ -11,6 +11,7 @@ typedef struct _ual
 	int numV;   // 정점의 수
 	int numE;   // 간선의 수
 	List * adjList;   // 간선의 정보
+	int * visitInfo;
 } ALGraph;
 
 // 그래프의 초기화
@@ -24,5 +25,8 @@ void AddEdge(ALGraph * pg, int fromV, int toV);
 
 // 유틸리티 함수: 간선의 정보 출력
 void ShowGraphEdgeInfo(ALGraph * pg);
+
+// Depth First Search: 정점의 정보 출력
+void DFShowGraphVertex(ALGraph * pg, int startV);
 
 #endif

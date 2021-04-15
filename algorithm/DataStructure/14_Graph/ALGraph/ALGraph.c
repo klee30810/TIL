@@ -3,59 +3,64 @@
 #include "ALGraph.h"
 #include "DLinkedList.h"
 
-int WhoIsPrecede(int data1, int data2)
-{
-    if(data1 < data2)
-        return 0;
-    else
-        return 1;
-}
+int WhoIsPrecede(int data1, int data2);
 
+// ±×·¡ÇÁÀÇ ÃÊ±âÈ­
 void GraphInit(ALGraph * pg, int nv)
 {
-    int i;
+	int i;	
 
-    // ì •ì ì˜ ìˆ˜ì— í•´ë‹¹í•˜ëŠ” ê¸¸ì´ì˜ ë¦¬ìŠ¤íŠ¸ ë°°ì—´ì„ ìƒì„±
-    pg->adjList = (List*)malloc(sizeof(List)*nv);   // ê°„ì„ ì •ë³´ë¥¼ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸ ìƒì„±
+	pg->adjList = (List*)malloc(sizeof(List)*nv);
+	pg->numV = nv;
+	pg->numE = 0;     // ÃÊ±âÀÇ °£¼± ¼ö´Â 0°³
 
-    pg->numV = nv;      // ì •ì ì˜ ìˆ˜ëŠ” nvì— ì €ì¥ëœ ê°’ìœ¼ë¡œ ê²°ì •
-    pg->numE = 0;       // ì´ˆê¸° ê°„ì„  ìˆ˜ëŠ” 0ê°œ
-
-    // ì •ì ì˜ ìˆ˜ë§Œí¼ ìƒì„±ëœ ë¦¬ìŠ¤íŠ¸ë“¤ì„ ì´ˆê¸°í™”
-    for(i=0; i<nv; i++)
-    {
-        ListInit(&(pg->adjList[i]));
-        SetSortRule(&(pg->adjList[i]), WhoIsPrecede);
-    }
+	for(i=0; i<nv; i++)
+	{
+		ListInit(&(pg->adjList[i]));
+		SetSortRule(&(pg->adjList[i]), WhoIsPrecede); 
+	}
 }
 
+// ±×·¡ÇÁ ¸®¼Ò½ºÀÇ ÇØÁ¦
 void GraphDestroy(ALGraph * pg)
 {
-    if(pg->adjList != NULL)
-        free(pg->adjList);
+	if(pg->adjList != NULL)
+		free(pg->adjList);
 }
 
+// °£¼±ÀÇ Ãß°¡
 void AddEdge(ALGraph * pg, int fromV, int toV)
 {
-    LInsert(&(pg->adjList[fromV]), toV);
-    LInsert(&(pg->adjList[toV]), fromV);
-    pg->numE += 1;
+	LInsert(&(pg->adjList[fromV]), toV);
+	LInsert(&(pg->adjList[toV]), fromV);
+	pg->numE += 1;
 }
 
+// À¯Æ¿¸®Æ¼ ÇÔ¼ö: °£¼±ÀÇ Á¤º¸ Ãâ·Â
 void ShowGraphEdgeInfo(ALGraph * pg)
 {
-    int i, vx;
+	int i;
+	int vx;
 
-    for(i=0; i<pg->numV; i++)
-    {
-        printf("%cì™€ ì—°ê²°ëœ ì •ì : ", ã…‘+65);
+	for(i=0; i<pg->numV; i++)
+	{
+		printf("%c¿Í ¿¬°áµÈ Á¤Á¡: ", i + 65);
+		
+		if(LFirst(&(pg->adjList[i]), &vx))
+		{
+			printf("%c ", vx + 65);
+			
+			while(LNext(&(pg->adjList[i]), &vx))
+				printf("%c ", vx + 65);
+		}
+		printf("\n");
+	}
+}
 
-        if(LFirst(&(pg->adjList[i]), &vx))
-        {
-            printf("%c ", vx+65);
-            while(LNext(&(pg->adjList[i]), &vx))
-                printf("%c ", vx+65);
-        }
-        printf("\n");
-    }
+int WhoIsPrecede(int data1, int data2)
+{
+	if(data1 < data2)
+		return 0;
+	else
+		return 1;
 }
